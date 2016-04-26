@@ -1,0 +1,28 @@
+{
+  "name": "frink-logic",
+  "version": "1.0.0",
+  "description": "Logic of frink ",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spiritinlife/frink-logic.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spiritinlife/frink-logic/issues"
+  },
+  "homepage": "https://github.com/spiritinlife/frink-logic#readme",
+  "dependencies": {
+    "moment": "^2.13.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "mongojs": "^2.3.0",
+    "node-uuid": "^1.4.7",
+    "should": "^8.3.1"
+  }
+}
