@@ -284,11 +284,11 @@ describe('Frinks', function () {
     });
 
 
-    describe('#release()', function () {
+    describe('#revoke()', function () {
 
-      beforeEach("Calling release", function (done) {
+      beforeEach("Calling revoke", function (done) {
         var frinks = new FrinksLib();
-        frinks.release(db, venueId, function (err, res) {
+        frinks.revoke(db, venueId, function (err, res) {
           done();
         });
       });
