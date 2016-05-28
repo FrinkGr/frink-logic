@@ -167,12 +167,14 @@ describe('Frinks', function () {
         "18",
         "60"
       ],
-      "amount": 4
+      "amount": 4,
+      "reserved" : 1
     };
     var timetableFrink = {
       id: todayId,
       venues: venues,
-      amount: 4
+      amount: 4,
+      reserved : 1
     };
 
     beforeEach(function (done) {
@@ -205,7 +207,7 @@ describe('Frinks', function () {
       it('should increase amount of reservations at the venue by one', function (done) {
         var frinks = new FrinksLib();
         frinks.sync(db, function (err, timetable) {
-          timetable.venue(venueId).reserved.should.equal(1);
+          timetable.venue(venueId).reserved.should.equal(2);
           done();
         });
       });
@@ -213,7 +215,7 @@ describe('Frinks', function () {
       it('should increase global amount of reservations by one', function (done) {
         var frinks = new FrinksLib();
         frinks.sync(db, function (err, timetable) {
-          timetable.info.reserved.should.equal(1);
+          timetable.info.reserved.should.equal(2);
           done();
         });
       });
@@ -233,7 +235,7 @@ describe('Frinks', function () {
       it('should decrease global reserved amount by one', function (done) {
         var frinks = new FrinksLib();
         frinks.sync(db, function (err, timetable) {
-          timetable.info.reserved.should.equal(-1);
+          timetable.info.reserved.should.equal(0);
           done();
         })
       });
@@ -241,7 +243,7 @@ describe('Frinks', function () {
       it('should decrease venue\'s reserved amount by one', function (done) {
         var frinks = new FrinksLib();
         frinks.sync(db, function (err, timetable) {
-          timetable.venue(venueId).reserved.should.equal(-1);
+          timetable.venue(venueId).reserved.should.equal(0);
           done();
         });
       });
@@ -304,7 +306,7 @@ describe('Frinks', function () {
       it('should decrease venue\'s reserved amount by one', function (done) {
         var frinks = new FrinksLib();
         frinks.sync(db, function (err, timetable) {
-          timetable.venue(venueId).reserved.should.equal(-1);
+          timetable.venue(venueId).reserved.should.equal(0);
           done();
         });
       });
@@ -328,7 +330,7 @@ describe('Frinks', function () {
       it('should decrease global reserved amount by one', function (done) {
         var frinks = new FrinksLib();
         frinks.sync(db, function (err, timetable) {
-          timetable.info.reserved.should.equal(-1);
+          timetable.info.reserved.should.equal(0);
           done();
         });
       });
