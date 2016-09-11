@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="433d55c1-673c-407f-b751-426322d6200b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/index.js" afterPath="$PROJECT_DIR$/lib/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/CountryCodesToCoo.js" />
     </list>
     <ignored path="frink-logic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,11 +27,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.74204946" vertical-offset="135" max-vertical-offset="3135">
-              <caret line="37" column="63" selection-start-line="37" selection-start-column="63" selection-end-line="37" selection-end-column="63" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3135">
+              <caret line="2" column="43" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CountryCodesToCoo.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/CountryCodesToCoo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.94699645" vertical-offset="3079" max-vertical-offset="3705">
+              <caret line="241" column="1" selection-start-line="241" selection-start-column="1" selection-end-line="241" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -44,8 +53,8 @@
             <state vertical-scroll-proportion="0.0" vertical-offset="1576" max-vertical-offset="5175">
               <caret line="134" column="7" selection-start-line="134" selection-start-column="7" selection-end-line="134" selection-end-column="7" />
               <folding>
-                <marker date="1473606447000" expanded="true" signature="4868:5826" placeholder="[...]" />
-                <marker date="1473606447000" expanded="true" signature="11357:11360" placeholder="//..." />
+                <marker date="1473606707000" expanded="true" signature="4868:5826" placeholder="[...]" />
+                <marker date="1473606707000" expanded="true" signature="11357:11360" placeholder="//..." />
               </folding>
             </state>
           </provider>
@@ -86,6 +95,7 @@
         <option value="$PROJECT_DIR$/tests/logicFrinks.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/lib/index.js" />
+        <option value="$PROJECT_DIR$/lib/CountryCodesToCoo.js" />
       </list>
     </option>
   </component>
@@ -508,7 +518,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6845000" />
+    <option name="totallyTimeSpent" value="6860000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -533,7 +543,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32889965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -567,21 +577,13 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3135">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/logicFrinks.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1606" max-vertical-offset="5235">
           <caret line="136" column="7" selection-start-line="136" selection-start-column="7" selection-end-line="136" selection-end-column="7" />
           <folding>
-            <marker date="1473606447000" expanded="true" signature="4868:5826" placeholder="[...]" />
-            <marker date="1473606447000" expanded="true" signature="11357:11360" placeholder="//..." />
+            <marker date="1473606707000" expanded="true" signature="4868:5826" placeholder="[...]" />
+            <marker date="1473606707000" expanded="true" signature="11357:11360" placeholder="//..." />
           </folding>
         </state>
       </provider>
@@ -617,8 +619,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1606" max-vertical-offset="5235">
           <caret line="136" column="7" selection-start-line="136" selection-start-column="7" selection-end-line="136" selection-end-column="7" />
           <folding>
-            <marker date="1473606447000" expanded="true" signature="4868:5826" placeholder="[...]" />
-            <marker date="1473606447000" expanded="true" signature="11357:11360" placeholder="//..." />
+            <marker date="1473606707000" expanded="true" signature="4868:5826" placeholder="[...]" />
+            <marker date="1473606707000" expanded="true" signature="11357:11360" placeholder="//..." />
           </folding>
         </state>
       </provider>
@@ -654,8 +656,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5190">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1473606447000" expanded="true" signature="4868:5826" placeholder="[...]" />
-            <marker date="1473606447000" expanded="true" signature="11357:11360" placeholder="//..." />
+            <marker date="1473606707000" expanded="true" signature="4868:5826" placeholder="[...]" />
+            <marker date="1473606707000" expanded="true" signature="11357:11360" placeholder="//..." />
           </folding>
         </state>
       </provider>
@@ -691,8 +693,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5190">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1473606447000" expanded="true" signature="4868:5826" placeholder="[...]" />
-            <marker date="1473606447000" expanded="true" signature="11357:11360" placeholder="//..." />
+            <marker date="1473606707000" expanded="true" signature="4868:5826" placeholder="[...]" />
+            <marker date="1473606707000" expanded="true" signature="11357:11360" placeholder="//..." />
           </folding>
         </state>
       </provider>
@@ -728,8 +730,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="4635" max-vertical-offset="5175">
           <caret line="309" column="9" selection-start-line="309" selection-start-column="9" selection-end-line="309" selection-end-column="9" />
           <folding>
-            <marker date="1473606447000" expanded="true" signature="4868:5826" placeholder="[...]" />
-            <marker date="1473606447000" expanded="true" signature="11357:11360" placeholder="//..." />
+            <marker date="1473606707000" expanded="true" signature="4868:5826" placeholder="[...]" />
+            <marker date="1473606707000" expanded="true" signature="11357:11360" placeholder="//..." />
           </folding>
         </state>
       </provider>
@@ -765,8 +767,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="4635" max-vertical-offset="5175">
           <caret line="309" column="9" selection-start-line="309" selection-start-column="9" selection-end-line="309" selection-end-column="9" />
           <folding>
-            <marker date="1473606447000" expanded="true" signature="4868:5826" placeholder="[...]" />
-            <marker date="1473606447000" expanded="true" signature="11357:11360" placeholder="//..." />
+            <marker date="1473606707000" expanded="true" signature="4868:5826" placeholder="[...]" />
+            <marker date="1473606707000" expanded="true" signature="11357:11360" placeholder="//..." />
           </folding>
         </state>
       </provider>
@@ -802,8 +804,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="4635" max-vertical-offset="5175">
           <caret line="309" column="9" selection-start-line="309" selection-start-column="9" selection-end-line="309" selection-end-column="9" />
           <folding>
-            <marker date="1473606447000" expanded="true" signature="4868:5826" placeholder="[...]" />
-            <marker date="1473606447000" expanded="true" signature="11357:11360" placeholder="//..." />
+            <marker date="1473606707000" expanded="true" signature="4868:5826" placeholder="[...]" />
+            <marker date="1473606707000" expanded="true" signature="11357:11360" placeholder="//..." />
           </folding>
         </state>
       </provider>
@@ -839,8 +841,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="4635" max-vertical-offset="5175">
           <caret line="309" column="9" selection-start-line="309" selection-start-column="9" selection-end-line="309" selection-end-column="9" />
           <folding>
-            <marker date="1473606447000" expanded="true" signature="4868:5826" placeholder="[...]" />
-            <marker date="1473606447000" expanded="true" signature="11357:11360" placeholder="//..." />
+            <marker date="1473606707000" expanded="true" signature="4868:5826" placeholder="[...]" />
+            <marker date="1473606707000" expanded="true" signature="11357:11360" placeholder="//..." />
           </folding>
         </state>
       </provider>
@@ -876,8 +878,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="4635" max-vertical-offset="5175">
           <caret line="309" column="9" selection-start-line="309" selection-start-column="9" selection-end-line="309" selection-end-column="9" />
           <folding>
-            <marker date="1473606447000" expanded="true" signature="4868:5826" placeholder="[...]" />
-            <marker date="1473606447000" expanded="true" signature="11357:11360" placeholder="//..." />
+            <marker date="1473606707000" expanded="true" signature="4868:5826" placeholder="[...]" />
+            <marker date="1473606707000" expanded="true" signature="11357:11360" placeholder="//..." />
           </folding>
         </state>
       </provider>
@@ -920,8 +922,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="4069" max-vertical-offset="5130">
           <caret line="309" column="9" selection-start-line="309" selection-start-column="9" selection-end-line="309" selection-end-column="9" />
           <folding>
-            <marker date="1473606447000" expanded="true" signature="4868:5826" placeholder="[...]" />
-            <marker date="1473606447000" expanded="true" signature="11357:11360" placeholder="//..." />
+            <marker date="1473606707000" expanded="true" signature="4868:5826" placeholder="[...]" />
+            <marker date="1473606707000" expanded="true" signature="11357:11360" placeholder="//..." />
           </folding>
         </state>
       </provider>
@@ -964,8 +966,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2640" max-vertical-offset="5130">
           <caret line="176" column="0" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
           <folding>
-            <marker date="1473606447000" expanded="true" signature="4868:5826" placeholder="[...]" />
-            <marker date="1473606447000" expanded="true" signature="11357:11360" placeholder="//..." />
+            <marker date="1473606707000" expanded="true" signature="4868:5826" placeholder="[...]" />
+            <marker date="1473606707000" expanded="true" signature="11357:11360" placeholder="//..." />
           </folding>
         </state>
       </provider>
@@ -1018,16 +1020,24 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1576" max-vertical-offset="5175">
           <caret line="134" column="7" selection-start-line="134" selection-start-column="7" selection-end-line="134" selection-end-column="7" />
           <folding>
-            <marker date="1473606447000" expanded="true" signature="4868:5826" placeholder="[...]" />
-            <marker date="1473606447000" expanded="true" signature="11357:11360" placeholder="//..." />
+            <marker date="1473606707000" expanded="true" signature="4868:5826" placeholder="[...]" />
+            <marker date="1473606707000" expanded="true" signature="11357:11360" placeholder="//..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74204946" vertical-offset="135" max-vertical-offset="3135">
-          <caret line="37" column="63" selection-start-line="37" selection-start-column="63" selection-end-line="37" selection-end-column="63" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3135">
+          <caret line="2" column="43" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/CountryCodesToCoo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.94699645" vertical-offset="3079" max-vertical-offset="3705">
+          <caret line="241" column="1" selection-start-line="241" selection-start-column="1" selection-end-line="241" selection-end-column="1" />
           <folding />
         </state>
       </provider>
