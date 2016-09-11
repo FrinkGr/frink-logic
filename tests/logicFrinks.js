@@ -2,7 +2,7 @@
  * Created by spiritinlife on 10/2/15.
  */
 var should = require('should'),
-  moment = require('moment'),
+  moment = require('moment-timezone'),
   uuid = require("node-uuid"),
   db = require('mongojs')("test-frink", ['timetablefrinks'], {authMechanism: 'ScramSHA1'});
 
@@ -23,7 +23,6 @@ describe('Frinks', function () {
       frinks.should.have.property('effectiveDay');
       frinks.should.have.property('effectiveFrom');
       frinks.should.have.property('effectiveUntil');
-      frinks.should.have.property('info');
     });
 
     it('should have as default collection : timetablefrinks', function () {
@@ -38,7 +37,7 @@ describe('Frinks', function () {
     describe('#shiftedDate', function () {
 
       it('should be shiftedDate if effectiveDate is after  midnight', function () {
-        var now = moment().hours(3).utc();
+        var now = moment.tz('Europe/Athens').hours(3);
         var context = {
           effectiveDate: now
         };
@@ -48,15 +47,15 @@ describe('Frinks', function () {
 
 
       describe('if it is a shiftedDate', function () {
-        var now = moment().hours(3).utc();
+        var now = moment.tz('Europe/Athens').hours(3);
         var context = {
           effectiveDate: now
         };
         var frinks = new FrinksLib(context);
-        var yesterday = now.subtract(1, 'day').hours(frinks.options.validFrom).minutes(0).seconds(0).utc();
+        var yesterday = now.subtract(1, 'day').hours(frinks.options.validFrom).minutes(0).seconds(0).milliseconds(0);
 
         it('effectiveDate should be yesterday at the start at the start of the gaming cycle', function () {
-          var isYesterday = frinks.effectiveDate.day() === yesterday.day();
+          var isYesterday = frinks.effectiveDate.day() == yesterday.day();
           isYesterday.should.equal(true)
         });
 
@@ -76,15 +75,15 @@ describe('Frinks', function () {
           (frinks.effectiveUntil.diff(yesterday, 'hours')).should.equal(24);
         })
 
-        it('info.id should be yesterday\'s YYYYMMDD', function () {
+        it('id should be yesterday\'s YYYYMMDD', function () {
           // this is actually the effectiveDate
-          (frinks.info.id === yesterday.format('YYYYMMDD')).should.equal(true);
+          (frinks.id === yesterday.format('YYYYMMDD')).should.equal(true);
         })
 
       });
 
       it('should not be shiftedDate if effectiveDate is before  midnight', function () {
-        var now = moment().hours(10).utc();
+        var now = moment.tz('Europe/Athens').hours(10);
         var context = {
           effectiveDate: now
         };
@@ -93,7 +92,7 @@ describe('Frinks', function () {
       });
 
       describe('if it is not a shiftedDate', function () {
-        var now = moment().utc();
+        var now = moment.tz('Europe/Athens').hours(10);
         var context = {
           effectiveDate: now
         };
@@ -111,52 +110,62 @@ describe('Frinks', function () {
         })
 
         it('effectiveFrom should equal to today\'s start of gaming cycly ', function () {
-          // this is actually the effectiveDate
-          (frinks.effectiveFrom.diff(now.hours(frinks.options.validFrom).minutes(0).seconds(0), 'milliseconds')).should.equal(0);
+          (frinks.effectiveFrom.diff(now.hours(frinks.options.validFrom).minutes(0).seconds(0).milliseconds(0), 'milliseconds')).should.equal(0);
         })
 
         it('effectiveUntil should equal to today\'s gaming cycle + 24 hours', function () {
-          // this is actually the effectiveDate
-          (frinks.effectiveUntil.diff(now.hours(frinks.options.validFrom).minutes(0).seconds(0), 'hours')).should.equal(24);
+          (frinks.effectiveUntil.diff(now.hours(frinks.options.validFrom).minutes(0).seconds(0).milliseconds(0), 'hours')).should.equal(24);
         })
 
-        it('info.id should be today\'s YYYYMMDD', function () {
-          // this is actually the effectiveDate
-          (frinks.info.id === now.format('YYYYMMDD')).should.equal(true);
+        it('id should be today\'s YYYYMMDD', function () {
+          (frinks.id === now.format('YYYYMMDD')).should.equal(true);
         })
       });
     });
   });
 
-  describe('#TESTS on info.id which is what is used to retrieve the correct timetablefrinks', function () {
+  describe('#TESTS on id which is what is used to retrieve the correct timetablefrinks', function () {
 
     var tests = [
 
-      {arg: moment("2015-10-02 3:00 +0000", "YYYY-MM-DD HH:mm Z").utc(), expected: "20151001"},// this is a shifted date since we are after midnight so return 20151001
-      {arg: moment("2015-10-02 3:59 +0000", "YYYY-MM-DD HH:mm Z").utc(), expected: "20151001"},
-      {arg: moment("2015-10-02 4:00 +0000", "YYYY-MM-DD HH:mm Z").utc(), expected: "20151002"},
-      {arg: moment("2015-11-02 4:01 +0000", "YYYY-MM-DD HH:mm Z").utc(), expected: "20151102"},
-      {arg: moment("2016-11-02 4:01 +0000", "YYYY-MM-DD HH:mm Z").utc(), expected: "20161102"},
-      {arg: moment("2016-11-02 4:01 +0000", "YYYY-MM-DD HH:mm Z").utc(), expected: "20161102"},
-      {arg: moment("2016-11-02 4:01 +0000", "YYYY-MM-DD HH:mm Z").utc(), expected: "20161102"},
-      {arg: moment("2016-11-02 16:01 +0000", "YYYY-MM-DD HH:mm Z").utc(), expected: "20161102"},
-      {arg: moment("2016-11-02 00:01 +0000", "YYYY-MM-DD HH:mm Z").utc(), expected: "20161101"},
+      // gr is +300 (with dst)so when utc is 4 gr is 7 and so it is the shifted date
+      {arg: moment.utc("2015-10-02 00:01Z"), country: 'gr', expected: "20151001"},
+      {arg: moment.utc("2015-10-02 03:59Z"), country: 'gr', expected: "20151001"},// this is a shifted date since we are after midnight so return 20151001
+      {arg: moment.utc("2015-10-02 03:59Z"), country: 'gr', expected: "20151001"},
+      {arg: moment.utc("2015-10-02 04:00Z"), country: 'gr', expected: "20151002"},
+      {arg: moment.utc("2015-10-02 04:01Z"), country: 'gr', expected: "20151002"},
+      {arg: moment.utc("2015-10-02 12:01Z"), country: 'gr', expected: "20151002"},
+
+      // colombia (co) is -500 so when utc 4 co is 23
+      // so shifted date should happen at 7 colombian time which is 12 utc
+      {arg: moment.utc("2015-10-02 11:59"), country: 'co', expected: "20151001"},
+      {arg: moment.utc("2015-10-02 12:00"), country: 'co', expected: "20151002"},
+      {arg: moment.utc("2015-10-02 12:01"), country: 'co', expected: "20151002"},
+
+      // france (fr) is +200 (with dst) so when utc is 4 fr is 6
+      // so shifted date should happen at 7 fr time which is 5 utc
+      {arg: moment.utc("2015-10-02 04:59"), country: 'fr', expected: "20151001"},
+      {arg: moment.utc("2015-10-02 05:00"), country: 'fr', expected: "20151002"},
+      {arg: moment.utc("2015-10-02 05:01"), country: 'fr', expected: "20151002"},
+
+
     ];
 
     tests.forEach(function (test) {
-      it('correctly finds ' + test.arg.toDate() + ' to have id of ' + test.expected, function () {
+      it('correctly finds ' + test.country + ' ' + test.arg.format() + ' to have id of ' + test.expected, function () {
         var context = {
-          effectiveDate: test.arg
+          effectiveDate: test.arg,
+          country: test.country
         };
         var frinks = new FrinksLib(context);
-        frinks.info.id.should.equal(test.expected);
+        frinks.id.should.equal(test.expected);
       });
     });
 
   });
 
   describe('#Test frink logic', function () {
-    var today = moment().utc();
+    var today = moment.tz('Europe/Athens');
     var todayId = today.format('YYYYMMDD');
     var venueId = uuid.v1();
     var venues = {};
@@ -168,13 +177,14 @@ describe('Frinks', function () {
         "60"
       ],
       "amount": 4,
-      "reserved" : 1
+      "reserved": 1
     };
     var timetableFrink = {
       id: todayId,
+      country : 'gr',
       venues: venues,
       amount: 4,
-      reserved : 1
+      reserved: 1
     };
 
     beforeEach(function (done) {
@@ -215,7 +225,7 @@ describe('Frinks', function () {
       it('should increase global amount of reservations by one', function (done) {
         var frinks = new FrinksLib();
         frinks.sync(db, function (err, timetable) {
-          timetable.info.reserved.should.equal(2);
+          timetable.reserved.should.equal(2);
           done();
         });
       });
@@ -235,7 +245,7 @@ describe('Frinks', function () {
       it('should decrease global reserved amount by one', function (done) {
         var frinks = new FrinksLib();
         frinks.sync(db, function (err, timetable) {
-          timetable.info.reserved.should.equal(0);
+          timetable.reserved.should.equal(0);
           done();
         })
       });
@@ -271,7 +281,7 @@ describe('Frinks', function () {
       it('should increase global consumed amount by one', function (done) {
         var frinks = new FrinksLib();
         frinks.sync(db, function (err, timetable) {
-          timetable.info.consumed.should.equal(1);
+          timetable.consumed.should.equal(1);
           done();
         })
       });
@@ -322,7 +332,7 @@ describe('Frinks', function () {
       it('should decrease global consumed amount by one', function (done) {
         var frinks = new FrinksLib();
         frinks.sync(db, function (err, timetable) {
-          timetable.info.consumed.should.equal(-1);
+          timetable.consumed.should.equal(-1);
           done();
         });
       });
@@ -330,7 +340,7 @@ describe('Frinks', function () {
       it('should decrease global reserved amount by one', function (done) {
         var frinks = new FrinksLib();
         frinks.sync(db, function (err, timetable) {
-          timetable.info.reserved.should.equal(0);
+          timetable.reserved.should.equal(0);
           done();
         });
       });
